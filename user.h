@@ -15,10 +15,12 @@ class user{
 public:
 	user(string username,string password);
 	bool addGame(int id);
+	void addVector(int id);
 	bool deleteGame(int id);
 	void changePassword(string password);
 	string getUsername();
-	bool isValidPassword(string username,string Password);
+	string getPassword();
+	bool isValidPassword(string Password);
 	string toString()const;
 	
 };

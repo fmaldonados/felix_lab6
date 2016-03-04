@@ -56,33 +56,68 @@ int main(int argc, char*argv[]){
 				cout<< "Introduza su password: ";
 				cin>>pass_login;
 				for(int i=0;i<lista_usuarios.size();i++){
-					if(lista_usuarios.getUsername()== usuario_login){
+					if(lista_usuarios[i].getUsername()== usuario_login){
 						index=i;
 						verificar_usuario=true;
 					}
 				}
 				if(verificar_usuario){
-
+					if(lista_usuarios[index].getPassword() == pass_login){
+						verificar_password=true;
+					}else{
+						cout<< "Password no valida";
+					}
 				}else{
 					cout<< "Ese usuario no existe";
 				}				
 
 				int opcion2;
-				cout<<endl<< "1-Agregar Juego"<<endl
-				<<"2-Eliminar juego"<<endl
-				<<"3-Cambiar contraseña"<<endl
-				<<"INGRESE OPCION: ";
-				cin>>opcion2;
-				if(opcion2==1){
-							
-				}else{
-					if(opcion2==2){
-
+			
+				if(verificar_usuario && verificar_password){
+					cout<<endl<< "1-Eliminar Juego"<<endl
+					<<"2-Agregar Juego"<<endl
+					<<"3-Cambiar contraseña"<<endl
+					<<"INGRESE OPCION: ";
+					cin>>opcion2;
+					if(opcion2==1){
+						int id_borrar;
+						
+						cout<< "Ingrese el juego que quiere eliminar";
+						cin>> id_borrar;
+						
+						
 					}else{
-						if(opcion2==3){
-					
+						if(opcion2==2){
+							int agregar;
+                                                        for(int i=0;i<lista_juegos.size();i++)
+                                                                cout<< i+1<< "- "<<lista_juegos[i].toString()<<endl;
+
+                                                        cout<<endl<<"ELIGA EL JUEGO QUE DESEA AGREGAR: ";
+                                                        cin>>agregar;
+                                                        agregar -=1;
+							
+							if(lista_usuarios[index].addGame(lista_juegos[agregar].getId()))
+								lista_usuarios[index].addVector(lista_juegos[agregar].getId());
+							else
+								cout<< "Ese id no es valido";
 						}else{
-							cout<< endl<<"OPCION NO VALIDA"<<endl;
+							if(opcion2==3){
+								string password_nueva;
+								string password_antes;
+								cout<< "Ingrese la nueva password: ";
+								cin >>password_nueva;
+								cout<< "Ingrese la password que tenia antes: ";
+								cin>>password_antes;
+								
+								if(lista_usuarios[index].isValidPassword(password_antes)){
+									lista_usuarios[index].changePassword(password_nueva);	
+								}else{
+									cout<< "password incorrecta";
+								}
+								
+							}else{
+								cout<< endl<<"OPCION NO VALIDA"<<endl;
+							}
 						}
 					}
 				}
