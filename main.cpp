@@ -82,10 +82,15 @@ int main(int argc, char*argv[]){
 					if(opcion2==1){
 						int id_borrar;
 						
-						cout<< "Ingrese el juego que quiere eliminar";
+		
+						cout<< "Ingrese el juego que quiere eliminar: ";
 						cin>> id_borrar;
-						
-						
+										
+						if(lista_usuarios[index].deleteGame(id_borrar)){
+							lista_usuarios[index].quitar(id_borrar);
+						}else{
+							cout<< "No tienes ese juego";
+						}
 					}else{
 						if(opcion2==2){
 							int agregar;

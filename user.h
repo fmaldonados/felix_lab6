@@ -18,6 +18,7 @@ public:
 	void addVector(int id);
 	bool deleteGame(int id);
 	void changePassword(string password);
+	void quitar(int id);
 	string getUsername();
 	string getPassword();
 	bool isValidPassword(string Password);

@@ -25,11 +25,19 @@ void user::addVector(int id){
 bool user::deleteGame(int id){
 	bool puede=true;
         for(int i=0; i<games.size();i++){
-                if(games[i] == id){
+                if(games[i] != id){
                         puede=false;
                 }
         }
         return puede;
+}
+void user::quitar(int id){
+	for(int i=0;i<games.size();i++){
+		if(games[i] == id){
+			games.erase(games.begin()+i);
+		}
+	}
+
 }
 void user::changePassword(string password){
 	this->password=password;
