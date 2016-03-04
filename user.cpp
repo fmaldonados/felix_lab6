@@ -5,28 +5,42 @@
 
 using std::string;
 using std::stringstream;
-
-user(string username ,string password){
+using std::cout;
+user::user(string username ,string password){
 	this -> username = username;	
 	this -> password = password;
 }
-bool addGame(int id){
-	
+bool user::addGame(int id){
+	bool puede=true;
+	for(int i=0; i<games.size();i++){
+		if(games[i] == id){
+			puede=false;	
+		}
+	}
+	return puede;	
 }
-bool deleteGame(int id){
+bool user::deleteGame(int id){
 
 }
-void changePassword(string password){
+void user::changePassword(string password){
 
 }
-string getUsername(){
+string user::getUsername(){
+	return username;
+}
+bool user::isValidPassword(string username,string Password){
 
 }
-bool isValidPassword(string username,string Password){
-
-}
-string toString()const{
+string user::toString()const{
 	stringstream ss;
 	ss<< "USERNAME: " << username<< " PASSWORD: " << password;
+	for(int i=0;i<games.size();i++){
+		cout<< "\t"<< i+1<<"- "<<games[i];
+	}
 	return ss.str();
 }
+
+
+
+
+

@@ -11,9 +11,9 @@ class user{
 	string username;
 	string password;
 	vector<int> games;
-
-	public:
-	user(string,string);
+	
+public:
+	user(string username,string password);
 	bool addGame(int id);
 	bool deleteGame(int id);
 	void changePassword(string password);
